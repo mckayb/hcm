@@ -25,3 +25,4 @@ executable hcm
       Cmds.Add
       Cmds.Remove
       Cmds.Lock
+      Cmds.Run

@@ -1,4 +1,4 @@
-module Cmds.Add where
+module Cmds.Run where
 
 import Data.String (String)
 import Prelude ()

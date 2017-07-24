@@ -5,7 +5,8 @@ module Main where
 import qualified Cmds.Add (run)
 import qualified Cmds.Remove (run)
 import qualified Cmds.Lock (run)
-import Data.Bool (Bool(False, True), not)
+import qualified Cmds.Run (run)
+import Data.Bool (not)
 import Data.Eq (Eq, (==))
 import Data.Foldable (foldl)
 import Data.Function (($), (.))
@@ -19,9 +20,9 @@ import Text.Show (Show)
 
 main :: IO ()
 main = do
-  args <- getArgs
-  print args
-  case parseArgs args of
+  cmdLineArgs <- getArgs
+  print cmdLineArgs
+  case parseArgs cmdLineArgs of
     Help -> showHelp
     Version -> showVersion
     Cmd Options {cmd, args, flags} ->
@@ -31,11 +32,12 @@ main = do
         "remove" -> Cmds.Remove.run args flags
         "uninstall" -> Cmds.Remove.run args flags
         "lock" -> Cmds.Lock.run args flags
+        "run" -> Cmds.Run.run args flags
         _ -> do
-          showError args
+          showError cmdLineArgs
           showHelp
     Error -> do
-      showError args
+      showError cmdLineArgs
       showHelp
 
 parseArgs :: [String] -> ParseResult
