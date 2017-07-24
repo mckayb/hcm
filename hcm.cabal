@@ -1,0 +1,26 @@
+name:                hcm
+version:             0.1.0.0
+homepage:            https://github.com/mckayb/hcm#readme
+license:             BSD3
+license-file:        LICENSE
+author:              McKay Broderick
+maintainer:          mckay.db@gmail.com
+copyright:           McKay Broderick
+category:            Web
+build-type:          Simple
+cabal-version:       >= 1.10
+
+extra-source-files:
+    README.md
+
+executable hcm
+  hs-source-dirs:
+      src
+  main-is: Main.hs
+  default-language: Haskell2010
+  build-depends:
+      base >=4.7 && <5
+  other-modules:
+      Cmds.Add
+      Cmds.Remove
+      Cmds.Lock
